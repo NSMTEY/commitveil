@@ -8,7 +8,7 @@ Annotated tag roots are enumerated from all local refs and HEAD, then nested tag
 
 Collected commit/tag bytes are checked against their SHA-1 or SHA-256 object IDs before evaluation. This detects identity objects that Git can read successfully despite a corrupted checksum; it does not run fsck or validate unrelated file/tree contents.
 
-The package has no runtime dependencies. Scans never fetch, rewrite, invoke hooks, execute repository code, or upload anything. Test fixtures use temporary directories under the workspace. The integration suite exercises the compiled executable, not a separate test-only entry point.
+The package has no runtime dependencies. Scans never fetch, rewrite, invoke hooks, execute repository code, or upload anything. Test fixtures use operating system temporary directories outside the checkout. The integration suite exercises the compiled executable, not a separate test-only entry point.
 
 `git/executable.ts` selects an absolute Git program from trusted absolute PATH entries, excluding the working/scanned directories and resolving symbolic links. Both startup and repository commands use this explicit path. This prevents Windows' default cwd-before-PATH search from executing a repository-local `git.exe`; no shell or `which`/`where` subprocess is used.
 

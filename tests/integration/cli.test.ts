@@ -5,9 +5,11 @@ import {
   mkdirSync,
   mkdtempSync,
   readFileSync,
+  realpathSync,
   rmSync,
   writeFileSync,
 } from "node:fs";
+import { tmpdir } from "node:os";
 import { delimiter, join, resolve } from "node:path";
 import { setImmediate } from "node:timers/promises";
 import { pathToFileURL } from "node:url";
@@ -15,8 +17,10 @@ import { deflateSync, inflateSync } from "node:zlib";
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { scan } from "../../src/commands/scan.js";
 
-// All fixtures stay inside this workspace and are removed after the suite.
-const base = mkdtempSync(resolve(".test-repositories-"));
+// Fixtures live outside the checkout and are removed after the suite.
+const base = realpathSync(
+  mkdtempSync(join(tmpdir(), "commitveil-repositories-")),
+);
 const cli = resolve("dist/cli.js");
 const env = {
   ...process.env,

@@ -2,14 +2,18 @@ import {
   chmodSync,
   mkdirSync,
   mkdtempSync,
+  realpathSync,
   rmSync,
   writeFileSync,
 } from "node:fs";
-import { delimiter, join, resolve } from "node:path";
+import { tmpdir } from "node:os";
+import { delimiter, join } from "node:path";
 import { afterAll, describe, expect, it } from "vitest";
 import { resolveGitExecutable } from "../../src/git/executable.js";
 
-const base = mkdtempSync(resolve(".test-repositories-executable-"));
+const base = realpathSync(
+  mkdtempSync(join(tmpdir(), "commitveil-executable-")),
+);
 const blocked = join(base, "untrusted");
 const trusted = join(base, "trusted");
 mkdirSync(blocked);
