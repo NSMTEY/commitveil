@@ -1,0 +1,56 @@
+{
+  "name": "commitveil",
+  "version": "0.1.0",
+  "description": "Audit Git history for identity and email leaks before publishing a repository.",
+  "type": "module",
+  "bin": {
+    "commitveil": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "SECURITY.md",
+    "docs",
+    "examples"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@10.18.3",
+  "author": "NSMTEY",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NSMTEY/commitveil.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NSMTEY/commitveil/issues"
+  },
+  "homepage": "https://github.com/NSMTEY/commitveil#readme",
+  "keywords": [
+    "git",
+    "privacy",
+    "cli",
+    "identity"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "lint": "biome check .",
+    "typecheck": "tsc --noEmit",
+    "format": "biome check --write .",
+    "prepack": "npm run build"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.0",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.9.0",
+    "vitest": "^3.2.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}

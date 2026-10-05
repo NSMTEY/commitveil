@@ -1,0 +1,7 @@
+{
+  "allowedNames": ["NSMTEY", "Collaborator"],
+  "allowedEmails": [
+    "*@users.noreply.github.com",
+    "collaborator@example.invalid"
+  ]
+}

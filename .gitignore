@@ -1,0 +1,9 @@
+node_modules/
+dist/
+coverage/
+*.tgz
+.DS_Store
+Thumbs.db
+.test-repositories-*/
+.manual-repositories/
+.review/
